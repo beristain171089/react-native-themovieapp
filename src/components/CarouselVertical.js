@@ -11,13 +11,13 @@ const ITEM_WIDTH = width * 0.7;
 
 export default function CarouselVertical(props) {
 
-    const { data } = props;
+    const { data, navigation } = props;
 
     return (
         <Carousel
             layout="default"
             data={data}
-            renderItem={(item) => <RenderItem data={item} />}
+            renderItem={(item) => <RenderItem data={item} navigation={navigation} />}
             sliderWidth={width}
             itemWidth={ITEM_WIDTH}
         />
@@ -26,8 +26,8 @@ export default function CarouselVertical(props) {
 
 function RenderItem(props) {
 
-    const { data } = props;
-    const { title, poster_path, genre_ids } = data.item;
+    const { data, navigation } = props;
+    const { id, title, poster_path, genre_ids } = data.item;
     const imageUrl = `${BASE_PATH_IMG}/w500/${poster_path}`;
 
     const [genres, setGenres] = useState(null);
@@ -40,8 +40,12 @@ function RenderItem(props) {
 
     }, []);
 
+    const onNavigation = () => {
+        navigation.navigate("movie", { id: id });
+    };
+
     return (
-        <TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPress={onNavigation}>
             <View style={styles.card}>
                 <Image
                     style={styles.image}

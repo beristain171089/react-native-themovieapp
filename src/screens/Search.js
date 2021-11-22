@@ -29,8 +29,8 @@ export default function Search(props) {
     return (
         <SafeAreaView>
             <Searchbar
-                placeholder='Buscar palícula...'
-                iconColor={Platform.os === 'ios' && 'transparent'}
+                placeholder='Buscar película...'
+                iconColor={Platform.OS === 'ios' && 'transparent'}
                 icon="arrow-left"
                 style={styles.input}
                 onChangeText={(e) => setSearch(e)}

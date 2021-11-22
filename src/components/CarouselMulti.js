@@ -10,7 +10,6 @@ const ITEM_WIDTH = Math.round(width * 0.3);
 export default function CarouselMulti(props) {
 
     const { data, navigation } = props;
-    console.log(props);
 
     return (
         <Carousel
